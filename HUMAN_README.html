@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Change Detector — Friendly Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: #233047;
+      background: #f3f7fc;
+      line-height: 1.65;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 38px 18px; }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid #e1e9f2;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 18px 55px #25395718;
+    }
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      align-items: center;
+      gap: 20px;
+      padding: 36px 42px;
+      color: #fff;
+      background: linear-gradient(125deg, #10243d, #28567b 68%, #398879);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #9debd1;
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; }
+    header p:last-child { max-width: 520px; margin: 14px 0 0; color: #d7e8f5; }
+    .art { width: 140px; height: 150px; }
+    section { padding: 25px 42px 4px; }
+    h2 { margin: 0 0 10px; color: #193550; font-size: 1.23rem; }
+    p { margin: 0 0 15px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .card { padding: 15px; border: 1px solid #e8edf3; border-radius: 14px; background: #fbfcfe; }
+    .card strong { display: block; margin-bottom: 4px; }
+    .green { color: #08764c; }
+    .red { color: #bd354b; }
+    .blue { color: #345caa; }
+    code {
+      padding: .15em .42em;
+      border-radius: 6px;
+      color: #26476b;
+      background: #eef4fa;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: .92em;
+    }
+    .steps { padding-left: 1.3em; }
+    .steps li { padding: 3px 0 7px 4px; }
+    .note {
+      margin: 10px 0 30px;
+      padding: 14px 16px;
+      border-left: 4px solid #37a981;
+      border-radius: 8px;
+      background: #effaf5;
+    }
+    footer { padding: 18px 42px 25px; color: #68778c; font-size: .88rem; }
+    @media (max-width: 620px) {
+      body { padding: 12px; }
+      header { grid-template-columns: 1fr; padding: 28px 24px; }
+      .art { width: 95px; height: 100px; }
+      section, footer { padding-right: 24px; padding-left: 24px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">A little peace of mind for your project</p>
+        <h1>Change Detector</h1>
+        <p>A friendly workspace watcher that notices file changes and turns them into clear, colorful desktop bubbles.</p>
+      </div>
+      <svg class="art" viewBox="0 0 160 170" role="img" aria-labelledby="balloon-title">
+        <title id="balloon-title">Shiny green, red, and blue notification balloons</title>
+        <path d="M75 91c-2 23 14 29 5 47" fill="none" stroke="#d7e8f5" stroke-width="2"/>
+        <path d="M112 112c-4 18 7 24 2 38" fill="none" stroke="#d7e8f5" stroke-width="2"/>
+        <path d="M39 87c-4 19-1 26-9 37" fill="none" stroke="#d7e8f5" stroke-width="2"/>
+        <ellipse cx="76" cy="61" rx="31" ry="38" fill="#16a66b"/>
+        <ellipse cx="76" cy="58" rx="25" ry="31" fill="#43d894"/>
+        <ellipse cx="67" cy="46" rx="8" ry="11" fill="#c8ffe2" opacity=".8"/>
+        <path d="m68 98 16 0-8 9z" fill="#43d894"/>
+        <ellipse cx="116" cy="94" rx="22" ry="27" fill="#e24c63"/>
+        <ellipse cx="109" cy="84" rx="6" ry="8" fill="#ffe5e9" opacity=".8"/>
+        <path d="m110 120 12 0-6 7z" fill="#e24c63"/>
+        <ellipse cx="37" cy="99" rx="19" ry="24" fill="#628ff0"/>
+        <ellipse cx="31" cy="90" rx="5" ry="7" fill="#e3edff" opacity=".8"/>
+        <path d="m32 122 10 0-5 6z" fill="#628ff0"/>
+        <path d="m127 42 3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#ffe89a"/>
+        <path d="m40 34 2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#b9f4de"/>
+      </svg>
+    </header>
+
+    <section>
+      <h2>What it does</h2>
+      <p>The watcher checks this project about once a second. When it sees a real change, a large balloon rises from the bottom of the screen, pauses near the top for <strong>at least five seconds</strong>, then bursts into colorful glitter. The file name and a short change preview appear right on the balloon.</p>
+      <div class="cards">
+        <div class="card"><strong class="green">Green · Added</strong>New files, folders, or text lines.</div>
+        <div class="card"><strong class="red">Red · Removed</strong>Deleted files, folders, or text lines. An edit that removes lines is red, too.</div>
+        <div class="card"><strong class="blue">Blue · Changed</strong>Other edits, such as a permissions change.</div>
+      </div>
+      <p>Unchanged files stay quiet. Git internals and Python's generated <code>__pycache__</code> folder are ignored.</p>
+    </section>
+
+    <section>
+      <h2>Start or stop watching</h2>
+      <ol class="steps">
+        <li>Open a terminal in the project folder.</li>
+        <li>Start the watcher with <code>python3 scripts/change_detector.py</code>.</li>
+        <li>To stop it, focus that terminal and press <code>Ctrl+C</code>.</li>
+      </ol>
+      <div class="note"><strong>Good to know:</strong> The <code>change_detector</code> Copilot agent explains and manages this watcher, but the watcher is a separate process. It must be running to show popups.</div>
+    </section>
+
+    <section>
+      <h2>Keeping this guide up to date</h2>
+      <p>Whenever the agent's behavior, notification design, settings, or start/stop steps change, update this guide at the same time. That way, the instructions and the actual experience stay in step.</p>
+    </section>
+    <footer>Made to be easy on the eyes — and easy to understand.</footer>
+  </main>
+</body>
+</html>
